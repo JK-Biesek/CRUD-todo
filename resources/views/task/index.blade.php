@@ -46,9 +46,15 @@
           @foreach ($savedTask as $task)
           <tr>
             <th>{{ $task->id}}</th>
-            <th>{{ $task->name}}</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <td>{{ $task->name}}</td>
+            <td>Edit</td>
+            <td>
+              <form class="" action="{{route('task.destroy',['task'=>$task->id])}}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" class="btn btn-danger" value="Delete">
+              </form>
+            </td>
           </tr>
           @endforeach
         </tbody>
