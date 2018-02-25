@@ -33,6 +33,18 @@
             </div>
           </form>
         </div>
+        @if(session('add'))
+        <br>
+        <div class="alert alert-success">
+       {{ session('add') }}
+        </div>
+        @endif
+        @if(session('delete'))
+        <br>
+        <div class="alert alert-success">
+       {{ session('delete') }}
+        </div>
+        @endif
           <h3>Tasks ToDo</h3>
         @if(count($savedTask) > 0)
       <table class="table">
@@ -59,6 +71,12 @@
           @endforeach
         </tbody>
       </table>
+      @else
+      <div class="alert alert-warning">
+        <h3 class="text-center">No tasks added yet</h3>
+      </div>
+
+      </div>
           @endif
       </div>
     </div>
