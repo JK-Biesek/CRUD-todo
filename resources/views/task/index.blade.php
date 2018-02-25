@@ -33,6 +33,18 @@
             </div>
           </form>
         </div>
+        @if(session('add'))
+        <br>
+        <div class="alert alert-success">
+       {{ session('add') }}
+        </div>
+        @endif
+        @if(session('delete'))
+        <br>
+        <div class="alert alert-success">
+       {{ session('delete') }}
+        </div>
+        @endif
           <h3>Tasks ToDo</h3>
         @if(count($savedTask) > 0)
       <table class="table">
@@ -46,13 +58,27 @@
           @foreach ($savedTask as $task)
           <tr>
             <th>{{ $task->id}}</th>
-            <th>{{ $task->name}}</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <td>{{ $task->name}}</td>
+            <td>
+              <a href="{{ route ('task.edit',['task',$task->id])}}" class="btn btn-warning">Edit</a>
+              </td>
+            <td>
+              <form class="" action="{{route('task.destroy',['task'=>$task->id])}}" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" class="btn btn-danger" value="Delete">
+              </form>
+            </td>
           </tr>
           @endforeach
         </tbody>
       </table>
+      @else
+      <div class="alert alert-warning">
+        <h3 class="text-center">No tasks added yet</h3>
+      </div>
+
+      </div>
           @endif
       </div>
     </div>

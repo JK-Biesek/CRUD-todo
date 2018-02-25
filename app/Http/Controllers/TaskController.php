@@ -41,11 +41,10 @@ class TaskController extends Controller
           'taskName'=> 'required|min:5|max:250',
         ]);
         $task = new Task();
-
-        $task->name = $request->taskName;
+        $task->name = $request['taskName'];
 
         $task->save();
-        return redirect()->route('task.index');
+        return redirect()->route('task.index')->with('add','Task '.$task->name.' added');
     }
 
     /**
@@ -88,8 +87,12 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+
+        $task->delete();
+
+        return redirect()->route('task.index')->with('delete','Task Numer : '.$id.' deleted');
     }
 }
