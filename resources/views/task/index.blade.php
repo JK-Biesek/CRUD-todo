@@ -59,7 +59,9 @@
           <tr>
             <th>{{ $task->id}}</th>
             <td>{{ $task->name}}</td>
-            <td>Edit</td>
+            <td>
+              <a href="{{ route ('task.edit',['task',$task->id])}}" class="btn btn-warning">Edit</a>
+              </td>
             <td>
               <form class="" action="{{route('task.destroy',['task'=>$task->id])}}" method="post">
                 {{ csrf_field() }}
