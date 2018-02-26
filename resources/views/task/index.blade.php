@@ -33,6 +33,12 @@
        {{ session('add') }}
         </div>
         @endif
+        @if(session('updateMsg'))
+        <br>
+        <div class="alert alert-success">
+       {{ session('updateMsg') }}
+        </div>
+        @endif
         @if(session('delete'))
         <br>
         <div class="alert alert-success">
@@ -74,6 +80,7 @@
 
       </div>
           @endif
+          @extends('pagination.pagination')
       </div>
     </div>
   </body>

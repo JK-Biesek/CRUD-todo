@@ -1,4 +1,9 @@
-  @extends('layouts.app')
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TODO App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
   <body>
     <div class="container">
       <div class="col-md-offset-2 col-md-8">
@@ -24,18 +29,13 @@
               <input class="form-control" name="updTask" type="text" value="{{ $taskEdit->name }}">
             </div>
             <div class="form-group">
-              <input type="submit" class="btn btn-success btn-lg pull-right" value="">
+              <input type="submit" class="btn btn-success btn-lg pull-right" value="Update">
             </div>
 
-            <a href="#" class="btn btn-info">Go Back</a>
+            <a href="{{ route('task.index')}}" class="btn btn-info">Go Back</a>
           </form>
         </div>
-        @if(session('updateMsg'))
-        <br>
-        <div class="alert alert-success">
-       {{ session('updateMsg') }}
-        </div>
-        @endif
+
         @if(session('delete'))
         <br>
         <div class="alert alert-success">
