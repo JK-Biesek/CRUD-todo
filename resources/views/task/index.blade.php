@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>TODO App</title>
-    <link rel="stylesheet" href="css/app.css">
-  </head>
+  @extends('layouts.app')
   <body>
     <div class="container">
       <div class="col-md-offset-2 col-md-8">
@@ -60,7 +54,7 @@
             <th>{{ $task->id}}</th>
             <td>{{ $task->name}}</td>
             <td>
-              <a href="{{ route ('task.edit',['task',$task->id])}}" class="btn btn-warning">Edit</a>
+              <a href="{{ route ('task.edit',['task'=>$task->id])}}" class="btn btn-warning">Edit</a>
               </td>
             <td>
               <form class="" action="{{route('task.destroy',['task'=>$task->id])}}" method="post">
