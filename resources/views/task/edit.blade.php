@@ -16,22 +16,24 @@
         </div>
         @endif
 
-        <div class="">
-          <form action="index.html" method="post">
-            <div class="">
-              <input class="form-control" type="text" value="{{ $taskEdit->name }}">
+        <div class="row">
+          <form action="{{route ('task.update',[$taskEdit->id]) }}" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="_method" value="PUT">
+            <div class="form-group">
+              <input class="form-control" name="updTask" type="text" value="{{ $taskEdit->name }}">
             </div>
-            <div class="">
+            <div class="form-group">
               <input type="submit" class="btn btn-success btn-lg pull-right" value="">
             </div>
 
             <a href="#" class="btn btn-info">Go Back</a>
           </form>
         </div>
-        @if(session('add'))
+        @if(session('updateMsg'))
         <br>
         <div class="alert alert-success">
-       {{ session('add') }}
+       {{ session('updateMsg') }}
         </div>
         @endif
         @if(session('delete'))

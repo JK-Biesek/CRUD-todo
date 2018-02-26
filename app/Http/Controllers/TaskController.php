@@ -77,9 +77,15 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
-        //
+      $this->validate($request,[
+        'updTask'=> 'required|min:5|max:250',
+      ]);
+        $task = Task::find($id);
+        $task->name = $request->updTask;
+        $task->save();
+        return redirect()->route('task.index')->with('updateMsg','Task No : '.$request->id.'has been successfully updated');
     }
 
     /**
