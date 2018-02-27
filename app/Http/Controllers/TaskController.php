@@ -85,7 +85,7 @@ class TaskController extends Controller
         $task = Task::find($id);
         $task->name = $request->updTask;
         $task->save();
-        return redirect()->route('task.index')->with('updateMsg','Task No : '.$request->id.'has been successfully updated');
+        return redirect()->route('task.index')->with('updateMsg','Task No : '.$id.' has been successfully updated');
     }
 
     /**
